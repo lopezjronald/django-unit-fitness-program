@@ -25,7 +25,7 @@ class airmen(models.Model):
     active = models.BooleanField(default=True)
 
     def __str__(self):
-        return f"{self.rank} {self.first_name} {self.middle_initial} {self.last_name}\n"
+        return f"{self.rank} {self.first_name} {self.middle_initial} {self.last_name}"
 
 
 class failure(models.Model):
