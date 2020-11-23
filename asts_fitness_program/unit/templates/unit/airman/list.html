@@ -1,0 +1,19 @@
+{% extends "unit/base.html" %}
+{% block title %}All ASTS Airmen{% endblock %}
+{% block content %}
+    <h1>Airmen</h1>
+    {% for airman in airmen %}
+        <h2>
+            <a href="{{ airman.get_absolute_url }}">
+                {{ airman.rank }} {{ airman.last_name|capfirst }}, {{ airman.first_name|capfirst }}
+            </a>
+        </h2>
+        <p>
+            Fitness Level: {{ airman.fitness_level|capfirst }}
+        </p>
+        <p class="date">
+            Test Date: {{ airman.test_date }}
+        </p>
+    {% endfor %}
+    {% include "pagination.html" with page=airmen %}
+{% endblock %}

@@ -7,7 +7,7 @@ from .models import Airman, Physical_Training_Leader, Profile, Failure, Unit_Fit
 @admin.register(Airman)
 class AirmanAdmin(admin.ModelAdmin):
     list_display = ('rank', 'first_name', 'middle_initial', 'last_name', 'test_date')
-    list_filter = ('first_name', 'last_name', 'test_date')
+    list_filter = ('first_name', 'last_name', 'test_date', 'fitness_level')
     search_fields = ('first_name', 'last_name')
     prepopulated_fields = {'airman_slug': ('ssn',)}
     date_hierarchy = 'test_date'
@@ -21,6 +21,8 @@ class PhysicalTrainingLeader(admin.ModelAdmin):
     list_filter = ('ptl_expiration_date', 'cpr_expiration_date')
     date_hierarchy = 'ptl_expiration_date'
     ordering = ('-ptl_expiration_date', '-cpr_expiration_date')
+
+
 
 
 @admin.register(Profile)

@@ -1,7 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
 <head>
     <title>{% block title %}{% endblock %}</title>
+    <link href="{% static "css/unit.css" %}" rel="stylesheet">
 </head>
 <body>
-{% block content %}
-{% endblock %}
+<div id="content">
+    {% block content %}
+    {% endblock %}
+</div>
+<div id="sidebar">
+    <h2>349 ASTS Fitness Program</h2>
+    <p>Flight ~ Fight ~ Win</p>
+</div>
 </body>
+</html>

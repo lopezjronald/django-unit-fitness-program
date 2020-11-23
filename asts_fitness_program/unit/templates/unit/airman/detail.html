@@ -1,0 +1,8 @@
+{% extends "unit/base.html" %}
+{% block title %}{{ airman.rank }} {{ airman.first_name }} {{ airman.last_name }}{% endblock %}
+{% block content %}
+    <h1>{{ airman.rank }} {{ airman.first_name|capfirst }} {{ airman.last_name|capfirst }}</h1>
+    <p class="date">
+        Test Date: {{ airman.test_date }}
+    </p>
+{% endblock %}
