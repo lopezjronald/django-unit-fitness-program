@@ -5,7 +5,8 @@ app_name = 'unit'
 
 urlpatterns = [
     # post views
-    path('', views.airman_list, name='airman_list'),
+    # path('', views.airman_list, name='airman_list'),
+    path('', views.AirmanListView.as_view(), name='airman_list'),
     path('<int:year>/<int:month>/<int:day>/<slug:airman>/',
          views.airman_detail,
          name='airman_detail'),

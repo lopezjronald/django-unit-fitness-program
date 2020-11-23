@@ -63,7 +63,7 @@ class Airman(models.Model):
                                      default='active')
 
     class Meta:
-        ordering = ('-last_name',)
+        ordering = ('last_name',)
 
     def __str__(self):
         return f"{self.rank} {self.first_name} {self.middle_initial} {self.last_name}"
