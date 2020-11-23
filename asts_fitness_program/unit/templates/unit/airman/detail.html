@@ -3,6 +3,31 @@
 {% block content %}
     <h1>{{ airman.rank }} {{ airman.first_name|capfirst }} {{ airman.last_name|capfirst }}</h1>
     <p class="date">
+        Rank: {{ airman.rank }}
+        <br><br>
+        SSN: {{ airman.ssn }}
+        <br><br>
         Test Date: {{ airman.test_date }}
+        <br><br>
+        Fitness Level:
+        {% if airman.fitness_level == 'Excellent' %}
+            <strong style="color: green;">{{ airman.fitness_level }}</strong>
+        {% else %}
+            <i style="color: red;">{{ airman.fitness_level }}</i>
+        {% endif %}
+        <br><br>
+        PTL:
+        {% if airman.ptl %}
+            Yes
+        {% else %}
+            No
+        {% endif %}
+        <br><br>
+        UFPM:
+        {% if airman.ufpm %}
+            Yes
+        {% else %}
+            No
+        {% endif %}
     </p>
 {% endblock %}

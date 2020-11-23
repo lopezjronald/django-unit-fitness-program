@@ -5,3 +5,15 @@ W
 'asts_fitness_program/config/settings.py,2\6\268980cdad70cfb0c803a2f95b10ccb3b5c35c05
 S
 #asts_fitness_program/unit/models.py,9\3\9360148a28df88fe20c3c39bfc6414adc0cb4266
+b
+2asts_fitness_program/unit/templates/unit/base.html,d\9\d964b918a2c5cfd27bec31b7fc72b80e9dddf8cf
+U
+%asts_fitness_program/website/views.py,4\7\47415ee414cc12b5fe6ade8d6350102433db9915
+V
+&asts_fitness_program/website/models.py,b\9\b9831e3a1c67c9d40ee77fb93678a7c1ef78ba75
+b
+2asts_fitness_program/unit/templates/unit/home.html,f\b\fb501ffde11a1be6fe3883aeca0f8ad1ba15cd9e
+S
+#asts_fitness_program/config/urls.py,b\8\b8f6ceb9e02cd3cd80e7f93bfa8023fb7a5edf3d
+T
+$asts_fitness_program/config/views.py,1\6\1652760e63957e59c9d7c7740ecb0dbd1701b0bc

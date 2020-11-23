@@ -73,10 +73,10 @@ class Airman(models.Model):
 
     def get_absolute_url(self):
         return reverse('unit:airman_detail',
-                       args = [self.test_date.year,
-                               self.test_date.month,
-                               self.test_date.day,
-                               self.airman_slug])
+                       args=[self.test_date.year,
+                             self.test_date.month,
+                             self.test_date.day,
+                             self.airman_slug])
 
 
 class Failure(models.Model):
@@ -94,6 +94,7 @@ class Failure(models.Model):
         return f"{self.airman_id}: Failure date on {self.failure_date}"
 
 
+
 class Physical_Training_Leader(models.Model):
     ptl_id = models.AutoField(primary_key=True, serialize=True)
     airman_id = models.ForeignKey(
@@ -104,7 +105,7 @@ class Physical_Training_Leader(models.Model):
     cpr_expiration_date = models.DateField()
 
     class Meta:
-        ordering = ('-ptl_expiration_date',)
+        ordering = ('ptl_expiration_date',)
 
     def __str__(self):
         return f"{self.airman_id}: Certified on {self.ptl_certification_date} and expires on {self.ptl_expiration_date}"
@@ -122,7 +123,7 @@ class Unit_Fitness_Program_Manager(models.Model):
     ufpm_expiration_date = models.DateField()
 
     class Meta:
-        ordering = ('-ufpm_expiration_date',)
+        ordering = ('ufpm_expiration_date',)
 
     def __str__(self):
         return f"{self.airman_id}, Certified on {self.ufpm_certification_date} and expires on {self.ufpm_expiration_date}"
@@ -138,7 +139,7 @@ class Profile(models.Model):
     profile_details = models.TextField()
 
     class Meta:
-        ordering = ('-profile_expiration_date',)
+        ordering = ('profile_expiration_date',)
 
     def __str__(self):
         return f"{self.airman_id}: Profile Expiration Date: {self.profile_expiration_date}"

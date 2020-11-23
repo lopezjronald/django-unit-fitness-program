@@ -1,7 +1,7 @@
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.shortcuts import render, get_object_or_404
-from .models import Airman
+from .models import Airman, Failure, Profile, Physical_Training_Leader, Unit_Fitness_Program_Manager
 
 
 # def airman_list(request):
@@ -38,3 +38,27 @@ def airman_detail(request, year, month, day, airman):
     return render(request,
                   'unit/airman/detail.html',
                   {'airman': airman})
+
+
+class FailureListView(ListView):
+    model = Failure
+    template_name = 'unit/failure/list.html'
+    context_object_name = 'all_failure_list'
+
+
+class ProfileListView(ListView):
+    model = Profile
+    template_name = 'unit/profile/list.html'
+    context_object_name = 'all_profile_list'
+
+
+class PhysicalTrainingLeaderListView(ListView):
+    model = Physical_Training_Leader
+    template_name = 'unit/ptl/list.html'
+    context_object_name = 'all_ptl_list'
+
+
+class UnitFitnessProgramManagerListView(ListView):
+    model = Unit_Fitness_Program_Manager
+    template_name = 'unit/ufpm/list.html'
+    context_object_name = 'all_ufpm_list'
