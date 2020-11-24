@@ -12,8 +12,12 @@
         Fitness Level:
         {% if airman.fitness_level == 'Excellent' %}
             <strong style="color: green;">{{ airman.fitness_level }}</strong>
+        {% elif airman.fitness_level == 'Satisfactory' or airman.fitness_level == 'Pass' %}
+            <strong style="color: orange;">{{ airman.fitness_level }}</strong>
+        {% elif airman.fitness_level == 'Unsatisfactory' or airman.fitness_level == 'Fail' %}
+            <strong style="color: red;">{{ airman.fitness_level }}</strong>
         {% else %}
-            <i style="color: red;">{{ airman.fitness_level }}</i>
+            {{ airman.fitness_level }}
         {% endif %}
         <br><br>
         PTL:

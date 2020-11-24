@@ -1,8 +1,51 @@
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic import ListView, DetailView
 from django.shortcuts import render, get_object_or_404
 from .models import Airman, Failure, Profile, Physical_Training_Leader, Unit_Fitness_Program_Manager
+from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
+from .forms import SearchForm
 
+
+# from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+# from django.contrib.postgres.search import TrigramSimilarity
+
+
+def airman_search(request):
+    form = SearchForm()
+    query = None
+    results = []
+    if 'query' in request.GET:
+        form = SearchForm(request.GET)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            search_vector = SearchVector('first_name', 'last_name', 'ssn', )
+            search_query = SearchQuery(query)
+            results = Airman.active.annotate(
+                search=search_vector,
+                ranking=SearchRank(search_vector, search_query)
+            ).filter(search=search_query).order_by('-ranking')
+    return render(request,
+                  'unit/airman/search.html',
+                  {'form': form,
+                   'query': query,
+                   'results': results})
+
+
+# def airman_first_name_search(request):
+#     form = SearchForm()
+#     query = None
+#     results = []
+#     if 'query' in request.GET:
+#         form = SearchForm(request.GET)
+#         if form.is_valid():
+#             query = form.cleaned_data['query']
+#             results = Airman.active.annotate(
+#                 similarity=TrigramSimilarity('first_name', query),
+#             ).filter(similarity__gt=0.1).order_by('-similarity')
+#     return render(request,
+#                   'unit/airman/search.html',
+#                   {'form': form,
+#                    'query': query,
+#                    'results': results})
 
 # def airman_list(request):
 #     object_list = Airman.active.all()
