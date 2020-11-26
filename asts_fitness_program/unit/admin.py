@@ -1,11 +1,39 @@
 from django.contrib import admin
-from .models import Airman, Physical_Training_Leader, Profile, Failure, Unit_Fitness_Program_Manager
+from .models import Airman, Profile, Failure, Physical_Training_Leader, Unit_Fitness_Program_Manager
+
+
+class ProfileInline(admin.TabularInline):
+    model = Profile
+    extra = 0
+
+
+class FailureInline(admin.TabularInline):
+    model = Failure
+    extra = 0
+
+
+class PhysicalTrainingLeaderInline(admin.TabularInline):
+    model = Physical_Training_Leader
+    extra = 0
+
+
+class UnitFitnessProgramManagerInline(admin.TabularInline):
+    model = Unit_Fitness_Program_Manager
+    extra = 0
 
 
 # Register your models here.
 # admin.site.register(Airman)
 @admin.register(Airman)
 class AirmanAdmin(admin.ModelAdmin):
+
+    inlines = [
+        ProfileInline,
+        FailureInline,
+        PhysicalTrainingLeaderInline,
+        UnitFitnessProgramManagerInline,
+    ]
+
     list_display = ('rank', 'first_name', 'middle_initial', 'last_name', 'test_date')
     list_filter = ('first_name', 'last_name', 'test_date', 'fitness_level')
     search_fields = ('first_name', 'last_name')
@@ -21,8 +49,6 @@ class PhysicalTrainingLeader(admin.ModelAdmin):
     list_filter = ('ptl_expiration_date', 'cpr_expiration_date')
     date_hierarchy = 'ptl_expiration_date'
     ordering = ('-ptl_expiration_date', '-cpr_expiration_date')
-
-
 
 
 @admin.register(Profile)

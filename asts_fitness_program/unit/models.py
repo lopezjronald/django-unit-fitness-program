@@ -83,7 +83,7 @@ class Failure(models.Model):
     failure_id = models.AutoField(primary_key=True, serialize=True)
     airman_id = models.ForeignKey(
         Airman,
-        on_delete=models.DO_NOTHING, )
+        on_delete=models.CASCADE, )
     failure_date = models.DateField()
     be_well_completion_date = models.DateField()
 
@@ -91,15 +91,14 @@ class Failure(models.Model):
         ordering = ('-failure_date',)
 
     def __str__(self):
-        return f"{self.airman_id}: Failure date on {self.failure_date}"
-
+        return f"{self.airman_id}"
 
 
 class Physical_Training_Leader(models.Model):
     ptl_id = models.AutoField(primary_key=True, serialize=True)
     airman_id = models.ForeignKey(
         Airman,
-        on_delete=models.DO_NOTHING, )
+        on_delete=models.CASCADE, )
     ptl_certification_date = models.DateField()
     ptl_expiration_date = models.DateField()
     cpr_expiration_date = models.DateField()
@@ -108,14 +107,14 @@ class Physical_Training_Leader(models.Model):
         ordering = ('ptl_expiration_date',)
 
     def __str__(self):
-        return f"{self.airman_id}: Certified on {self.ptl_certification_date} and expires on {self.ptl_expiration_date}"
+        return f"{self.airman_id}"
 
 
 class Unit_Fitness_Program_Manager(models.Model):
     ufpm_id = models.AutoField(primary_key=True, serialize=True)
     airman_id = models.ForeignKey(
         Airman,
-        on_delete=models.DO_NOTHING, )
+        on_delete=models.CASCADE, )
     ptl_id = models.ForeignKey(
         Physical_Training_Leader,
         on_delete=models.CASCADE, )
@@ -126,14 +125,14 @@ class Unit_Fitness_Program_Manager(models.Model):
         ordering = ('ufpm_expiration_date',)
 
     def __str__(self):
-        return f"{self.airman_id}, Certified on {self.ufpm_certification_date} and expires on {self.ufpm_expiration_date}"
+        return f"{self.airman_id}"
 
 
 class Profile(models.Model):
     profile_id = models.AutoField(primary_key=True, serialize=True)
     airman_id = models.ForeignKey(
         Airman,
-        on_delete=models.DO_NOTHING, )
+        on_delete=models.CASCADE, )
     profile_start_date = models.DateField()
     profile_expiration_date = models.DateField()
     profile_details = models.TextField()
@@ -142,4 +141,4 @@ class Profile(models.Model):
         ordering = ('profile_expiration_date',)
 
     def __str__(self):
-        return f"{self.airman_id}: Profile Expiration Date: {self.profile_expiration_date}"
+        return f"{self.airman_id}"
